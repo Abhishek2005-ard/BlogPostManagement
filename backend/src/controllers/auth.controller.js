@@ -8,11 +8,12 @@ const signToken = (id) =>
 
 const sendTokenResponse = (user, statusCode, res) => {
   const token = signToken(user._id);
+  const isProduction = process.env.NODE_ENV === 'production' || process.env.RENDER === 'true';
   const cookieOptions = {
     expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    secure: isProduction,
+    sameSite: isProduction ? 'none' : 'lax',
   };
 
   res.cookie('jwt', token, cookieOptions);
