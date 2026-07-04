@@ -1,0 +1,19 @@
+# Node modules — installed fresh inside the container
+**/node_modules
+
+# Development build artifacts
+**/dist
+
+# Git & IDE
+.git
+.gitignore
+.vscode
+.idea
+
+# Docs
+*.md
+deployment_guide.md
+
+# Env files — secrets must be injected at runtime
+**/.env
+**/.env.*
